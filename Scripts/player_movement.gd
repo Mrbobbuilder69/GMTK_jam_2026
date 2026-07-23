@@ -5,3 +5,4 @@ extends Node2D
 func _physics_process(delta: float) -> void:
 	var inputVec := Input.get_vector("Left","Right","Down","Up")
 	rb.linear_velocity = speed*inputVec
+#peepeepoopoo

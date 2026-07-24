@@ -32,10 +32,6 @@ var dead = false
 @abstract func onDetected() -> void
 @abstract func onUnDetect() -> void
 
-func _ready() -> void:
-    blood = maxBlood
-    setState(AIState.patrol)
-    playerref = get_node("%Player")
 
 func tweenToAngle(target:float, angVel:float) ->void:
         tween = create_tween()
@@ -43,6 +39,11 @@ func tweenToAngle(target:float, angVel:float) ->void:
         var diff := angle_difference(currentAngle,target) 
         var targetAngle = currentAngle+diff
         tween.tween_property(rb,"rotation",targetAngle,abs(diff)/angVel)
+
+func _ready() -> void:
+    blood = maxBlood
+    setState(AIState.patrol)
+    playerref = get_node("%Player")
 
 func onDeath():
     print("summon corpse and blood stuff here and do other death things")
@@ -53,17 +54,18 @@ func onDamage(damangeAmount:float):
 
 #Returns if the player is visible or not, to check state change
 func checkPlayerVisible(playerPosition :Vector2) ->bool:
+    #first check if the player is in range
     var displacementVector = playerPosition-rb.position
     var distance = displacementVector.length()
     if distance > detectionDistance:
         return false
-    
+    #then find the forward vector and using the dot product identity see if it is within a half fov angular distance
     var forwardVector = Vector2.from_angle(rb.rotation)
     var dp = (forwardVector).dot(displacementVector.normalized())
     if dp <= cos(deg_to_rad(fov)/2):
         return false
     
-
+    #run the raycast to check if the player is blocked by terrain
     var space_state = get_world_2d().direct_space_state
     var query = PhysicsRayQueryParameters2D.create(rb.position,playerPosition)
     #BIT MASK, needs to be set via the bitwise operations(check the docks)
@@ -72,7 +74,6 @@ func checkPlayerVisible(playerPosition :Vector2) ->bool:
     var result = space_state.intersect_ray(query)
     if result:
         return false
-    #Call the on detected function
         
     return true
     
@@ -81,16 +82,20 @@ func setState(state:AIState) ->void:
     currentState = state
 
 func _physics_process(delta: float) -> void:
+    #Handle death
     if blood <= 0 and !dead:
         onDeath()
         dead = true
     if dead:
         return
+    #State machine
     match currentState:
         AIState.patrol:
             patrolBehaviour(delta)
         AIState.detected:
             detectedBehaviour(delta)
+    
+    #State switching logic
     if playerref != null:
         var playervisible := checkPlayerVisible(playerref.position)
         if playervisible and currentState != AIState.detected:

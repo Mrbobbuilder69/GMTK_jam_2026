@@ -1,14 +1,16 @@
 class_name BrawlerAI extends EnemyAI
 
-
+#export vars
 @export var rayScanDistance := float(20)
 @export var patrolSpeed := float(80)
 @export var detectedSpeed := float(140)
 @export var patrolRotationVelocity := float(2)
 @export var detectedRotationVelocity := float(4)
 @export var meleeDistance := float(30)
+#private vars
 var canBounce := true
 var newvel:Vector2
+
 func _ready() -> void:
 	rb.linear_velocity = (Vector2.from_angle(rb.rotation))*patrolSpeed
 	super._ready()
@@ -16,9 +18,9 @@ func _ready() -> void:
 ##Bounces around a closed room, might pull this up to the enemy controller
 func patrolBehaviour(delta:float) ->void:
 	if ray2D == null:
-		print("Ray is null ")
+		print("Ray object not set in inspector")
 		return
-	#
+	
 	ray2D.target_position = Vector2(1,0)*rayScanDistance
 
 	if ray2D.is_colliding() and canBounce:
@@ -27,7 +29,8 @@ func patrolBehaviour(delta:float) ->void:
 		#get raycast hit information 
 		var collisionData := RaycastHitData.new(ray2D.get_collider(),
 		ray2D.get_collision_normal(),ray2D.get_collision_point())
-		#compute bounce, bounce final velocity is inverting the normal component
+		#compute velocity components normal and tangent to the normal vector of the collision
+		# then bounce final velocity is inverting the normal component
 		var normalComponent := velocity.dot(collisionData.normal)*collisionData.normal
 		var tangentialComponent := velocity - normalComponent
 		var bounceVelocity := tangentialComponent - normalComponent

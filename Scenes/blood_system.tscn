@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://dji1wvaimhu2y"]
+
+[ext_resource type="Script" uid="uid://cumisnkll6v77" path="res://Scripts/blood_system.gd" id="1_3e8jb"]
+
+[node name="Blood System" type="Control" unique_id=1027061009]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_3e8jb")
+
+[node name="Label" type="Label" parent="." unique_id=1562067426]
+layout_mode = 0
+offset_right = 804.0
+offset_bottom = 366.0

@@ -12,8 +12,6 @@ func _physics_process(delta: float) -> void:
 	linear_velocity = speed*inputVec
 	look_at(mousePos)
 	
-	print (linear_velocity.length())
-	
 	footstep_distance_counter += global_position.distance_to(prev_position)
 	if footstep_distance_counter > footstep_interval and inputVec != Vector2.ZERO:
 		Effects.spawn_sfx("res://Sound/footstep.wav", self, 0.0, 1.0, self.global_position)

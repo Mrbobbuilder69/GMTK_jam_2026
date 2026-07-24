@@ -1,8 +1,32 @@
-extends Node2D
+extends RigidBody2D
 
-@export var rb : RigidBody2D
-@export var speed := float(1.2)
+@export var speed : float = 100.0
+@export var sprint_speed : float = 150.0
+@export var footstep_interval : float = 30.0
+
+var footstep_distance_counter : float = 0.0
+var prev_position : Vector2
+
 func _physics_process(delta: float) -> void:
-	var inputVec := Input.get_vector("Left","Right","Down","Up")
-	rb.linear_velocity = speed*inputVec
-#peepeepoopoo
+	var inputVec := Input.get_vector("Left","Right","Up","Down")
+	var mousePos = get_global_mouse_position()
+	
+	var cur_speed : float
+	if Input.is_action_pressed("Sprint"):
+		cur_speed = sprint_speed
+	else:
+		cur_speed = speed
+	linear_velocity = cur_speed*inputVec
+	look_at(mousePos)
+	
+	
+	
+	footstep_distance_counter += global_position.distance_to(prev_position)
+	if footstep_distance_counter > footstep_interval * (cur_speed/speed) and inputVec != Vector2.ZERO:
+		Effects.spawn_sfx("res://Sound/footstep.wav", self, 0.0, cur_speed/speed, self.global_position)
+		Effects.spawn_particles("res://ParticleEffects/footstep_particles.tscn", self.global_position, self, true)
+		footstep_distance_counter = 0.0
+	
+	prev_position = global_position
+
+	#peepeepoopoo

@@ -1,23 +1,20 @@
 [gd_scene format=3 uid="uid://c520ybe8rgo7x"]
 
 [ext_resource type="Script" uid="uid://cgrpksm33sv3" path="res://Scripts/player_movement.gd" id="1_cvnsp"]
-[ext_resource type="Texture2D" uid="uid://cxwlh570dokcq" path="res://Assets/White-Circle-PNG-HD-Image-2758320687.png" id="2_6t5aa"]
+[ext_resource type="Texture2D" uid="uid://b46shyvcmigyb" path="res://icon.svg" id="2_cvnsp"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_thlim"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_50ct6"]
 
-[node name="Player" type="Node2D" unique_id=964845094 node_paths=PackedStringArray("rb")]
+[node name="RigidBody2D" type="RigidBody2D" unique_id=421033602]
+gravity_scale = 0.0
+inertia = 1.0
 script = ExtResource("1_cvnsp")
-rb = NodePath("RigidBody2D")
+speed = 10000.0
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=732512854]
-scale = Vector2(0.016601563, 0.016601563)
-texture = ExtResource("2_6t5aa")
+z_index = 1
+scale = Vector2(0.165, 0.165)
+texture = ExtResource("2_cvnsp")
 
-[node name="RigidBody2D" type="RigidBody2D" parent="." unique_id=421033602]
-mass = 1000.0
-inertia = 1.0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D" unique_id=819351825]
-shape = SubResource("RectangleShape2D_thlim")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=896047731]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=819351825]
+shape = SubResource("CircleShape2D_50ct6")

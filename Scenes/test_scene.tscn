@@ -1,27 +1,69 @@
-[gd_scene format=3 uid="uid://b5kvkaduki84t"]
+[gd_scene load_steps=9 format=3 uid="uid://b5kvkaduki84t"]
 
 [ext_resource type="PackedScene" uid="uid://c520ybe8rgo7x" path="res://Scenes/player.tscn" id="1_3dogw"]
+[ext_resource type="Script" uid="uid://bosyd5yo7c6rg" path="res://Scenes/Scripts/weapon.gd" id="2_hb2xm"]
 [ext_resource type="Script" uid="uid://ctgu1ijoxfidi" path="res://Scenes/cam.gd" id="2_r5l72"]
 [ext_resource type="Texture2D" uid="uid://b46shyvcmigyb" path="res://icon.svg" id="3_50ct6"]
+[ext_resource type="Script" uid="uid://dkj8o6amowfqq" path="res://Scenes/Scripts/bulletSpawner.gd" id="5_ak5v8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ak5v8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eaav3"]
 size = Vector2(130, 130)
 
-[node name="Node2D" type="Node2D" unique_id=1330387886]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x033f"]
+size = Vector2(126, 126)
 
-[node name="player" parent="." unique_id=421033602 instance=ExtResource("1_3dogw")]
+[node name="Node2D" type="Node2D"]
+
+[node name="player" parent="." instance=ExtResource("1_3dogw")]
 speed = 100.0
 
-[node name="cam" type="Camera2D" parent="." unique_id=564697421 node_paths=PackedStringArray("target")]
+[node name="weapon" type="Area2D" parent="player"]
+position = Vector2(50, 0)
+disable_mode = 1
+script = ExtResource("2_hb2xm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="player/weapon"]
+shape = SubResource("RectangleShape2D_ak5v8")
+
+[node name="Sprite2D" type="Sprite2D" parent="player/weapon"]
+physics_interpolation_mode = 2
+rotation = -3.14159
+scale = Vector2(0.131259, -0.121122)
+texture = ExtResource("3_50ct6")
+
+[node name="RayCast2D" type="RayCast2D" parent="player/weapon"]
+
+[node name="Line2D" type="Line2D" parent="player/weapon"]
+points = PackedVector2Array(-2, 0)
+
+[node name="cam" type="Camera2D" parent="." node_paths=PackedStringArray("target")]
 script = ExtResource("2_r5l72")
 target = NodePath("../player")
 follow_speed = 10.0
 
-[node name="obstacle" type="StaticBody2D" parent="." unique_id=423191758]
+[node name="obstacle" type="StaticBody2D" parent="."]
 position = Vector2(-96, -61)
 
-[node name="sprite2D" type="Sprite2D" parent="obstacle" unique_id=1308029334]
+[node name="sprite2D" type="Sprite2D" parent="obstacle"]
 texture = ExtResource("3_50ct6")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="obstacle" unique_id=1537577840]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="obstacle"]
 shape = SubResource("RectangleShape2D_eaav3")
+
+[node name="bullet spawner" type="Node2D" parent="."]
+script = ExtResource("5_ak5v8")
+
+[node name="enemy (but just for testing weapons)" type="StaticBody2D" parent="."]
+position = Vector2(383, -20)
+metadata/Enemy = true
+
+[node name="Sprite2D" type="Sprite2D" parent="enemy (but just for testing weapons)"]
+texture = ExtResource("3_50ct6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="enemy (but just for testing weapons)"]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_x033f")
+
+[connection signal="shoot" from="player/weapon" to="bullet spawner" method="_on_weapon_shoot"]

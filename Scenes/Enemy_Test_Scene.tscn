@@ -1,0 +1,87 @@
+[gd_scene format=3 uid="uid://bj7keshvecx67"]
+
+[ext_resource type="PackedScene" uid="uid://o2g7ftervbl2" path="res://Scenes/Brawler_Enemy.tscn" id="1_pgncr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_thlim"]
+size = Vector2(20, 150)
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_thlim"]
+
+[node name="EnemyTestScene" type="Node2D" unique_id=111833282]
+
+[node name="Wall4" type="Node2D" parent="." unique_id=1422081603]
+position = Vector2(-127, 292)
+rotation = 1.5155977
+scale = Vector2(1.1449001, 1.7424002)
+
+[node name="RigidBody2D" type="RigidBody2D" parent="Wall4" unique_id=1004702696]
+freeze = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall4/RigidBody2D" unique_id=677615016]
+position = Vector2(0, -65)
+shape = SubResource("RectangleShape2D_thlim")
+
+[node name="Sprite2D" type="Sprite2D" parent="Wall4" unique_id=1147825011]
+position = Vector2(-2.9802322e-08, -65.5)
+scale = Vector2(20, 151)
+texture = SubResource("PlaceholderTexture2D_thlim")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=105181206]
+position = Vector2(-2, 122)
+scale = Vector2(1.07, 1.32)
+zoom = Vector2(1.62, 1.62)
+
+[node name="Wall2" type="Node2D" parent="." unique_id=1485578270]
+position = Vector2(108.00001, 283)
+scale = Vector2(0.9449001, 2.598024)
+
+[node name="RigidBody2D" type="RigidBody2D" parent="Wall2" unique_id=1990630911]
+freeze = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall2/RigidBody2D" unique_id=71949477]
+position = Vector2(0, -65)
+shape = SubResource("RectangleShape2D_thlim")
+
+[node name="Sprite2D" type="Sprite2D" parent="Wall2" unique_id=1619920571]
+position = Vector2(-2.9802322e-08, -65.5)
+scale = Vector2(20, 151)
+texture = SubResource("PlaceholderTexture2D_thlim")
+
+[node name="Wall" type="Node2D" parent="." unique_id=90678159]
+position = Vector2(-139, 310)
+scale = Vector2(1.07, 2.7600007)
+
+[node name="RigidBody2D" type="RigidBody2D" parent="Wall" unique_id=387429419]
+freeze = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall/RigidBody2D" unique_id=254368758]
+position = Vector2(0, -65)
+shape = SubResource("RectangleShape2D_thlim")
+
+[node name="Sprite2D" type="Sprite2D" parent="Wall" unique_id=1713142510]
+position = Vector2(-2.9802322e-08, -65.5)
+scale = Vector2(20, 151)
+texture = SubResource("PlaceholderTexture2D_thlim")
+
+[node name="Wall3" type="Node2D" parent="." unique_id=882602397]
+position = Vector2(-97, -73)
+rotation = 1.5613115
+scale = Vector2(1.07, 1.8399775)
+
+[node name="RigidBody2D" type="RigidBody2D" parent="Wall3" unique_id=1661732870]
+freeze = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall3/RigidBody2D" unique_id=1026707366]
+position = Vector2(0, -65)
+shape = SubResource("RectangleShape2D_thlim")
+
+[node name="Sprite2D" type="Sprite2D" parent="Wall3" unique_id=1631366451]
+position = Vector2(3.49502, -42.37445)
+scale = Vector2(20, 151)
+texture = SubResource("PlaceholderTexture2D_thlim")
+
+[node name="BrawlerEnemy" parent="." unique_id=1213182775 instance=ExtResource("1_pgncr")]
+position = Vector2(-23, 99)
+rotation = -1.1519274
+rayScanDistance = 40.0
+moveSpeed = 80.0

@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://o2g7ftervbl2"]
+
+[ext_resource type="Texture2D" uid="uid://f857wcnujuac" path="res://Assets/test_sprite.png" id="1_bs4qm"]
+[ext_resource type="Script" uid="uid://bomq42d7msaim" path="res://Scripts/EnemyAI/Brawler_AI.gd" id="1_c444j"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_thlim"]
+
+[node name="BrawlerEnemy" type="RigidBody2D" unique_id=1650754415 node_paths=PackedStringArray("rb", "ray2D")]
+script = ExtResource("1_c444j")
+moveSpeed = 60.0
+rb = NodePath(".")
+ray2D = NodePath("RayCast2D")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=430585652]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=481918697]
+texture = ExtResource("1_bs4qm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1448560319]
+shape = SubResource("CircleShape2D_thlim")
+
+[node name="RayCast2D" type="RayCast2D" parent="." unique_id=153997457]
+scale = Vector2(1.81, 1.81)
+target_position = Vector2(56.353596, 0.55248624)

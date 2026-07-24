@@ -11,6 +11,7 @@ config_version=5
 [application]
 
 config/name="Theme to be confirmed"
+run/main_scene="uid://bj7keshvecx67"
 config/features=PackedStringArray("4.7", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -49,6 +50,7 @@ Down={
 [physics]
 
 3d/physics_engine="Jolt Physics"
+2d/default_gravity=0.0
 
 [rendering]
 

@@ -7,11 +7,10 @@
 
 [node name="BrawlerEnemy" type="RigidBody2D" unique_id=1650754415 node_paths=PackedStringArray("rb", "ray2D")]
 script = ExtResource("1_c444j")
-moveSpeed = 60.0
+detectedSpeed = 260.0
+detectedRotationVelocity = 6.0
 rb = NodePath(".")
 ray2D = NodePath("RayCast2D")
-
-[node name="Area2D" type="Area2D" parent="." unique_id=430585652]
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=481918697]
 texture = ExtResource("1_bs4qm")

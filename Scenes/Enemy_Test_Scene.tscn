@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bj7keshvecx67"]
 
-[ext_resource type="PackedScene" uid="uid://o2g7ftervbl2" path="res://Scenes/Brawler_Enemy.tscn" id="1_pgncr"]
+[ext_resource type="Texture2D" uid="uid://cxwlh570dokcq" path="res://Assets/White-Circle-PNG-HD-Image-2758320687.png" id="1_pgncr"]
+[ext_resource type="PackedScene" uid="uid://o2g7ftervbl2" path="res://Scenes/Brawler_Enemy.tscn" id="2_5l8a0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_thlim"]
 size = Vector2(20, 150)
@@ -8,6 +9,13 @@ size = Vector2(20, 150)
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_thlim"]
 
 [node name="EnemyTestScene" type="Node2D" unique_id=111833282]
+
+[node name="BrawlerEnemy" parent="." unique_id=1650754415 instance=ExtResource("2_5l8a0")]
+position = Vector2(1.9999921, 138)
+rotation = 1.0444894
+detectedSpeed = 260.0
+detectedRotationVelocity = 6.0
+detectionDistance = 500.0
 
 [node name="Wall4" type="Node2D" parent="." unique_id=1422081603]
 position = Vector2(-127, 292)
@@ -80,8 +88,10 @@ position = Vector2(3.49502, -42.37445)
 scale = Vector2(20, 151)
 texture = SubResource("PlaceholderTexture2D_thlim")
 
-[node name="BrawlerEnemy" parent="." unique_id=1213182775 instance=ExtResource("1_pgncr")]
-position = Vector2(-23, 99)
-rotation = -1.1519274
-rayScanDistance = 40.0
-moveSpeed = 80.0
+[node name="Player" type="RigidBody2D" parent="." unique_id=184726372]
+unique_name_in_owner = true
+position = Vector2(2, 99)
+
+[node name="Sprite2D" type="Sprite2D" parent="Player" unique_id=1329713208]
+scale = Vector2(0.023437498, 0.023437498)
+texture = ExtResource("1_pgncr")

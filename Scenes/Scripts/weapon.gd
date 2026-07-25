@@ -18,7 +18,7 @@ func _physics_process(delta):
 		shoot.emit(global_position.x, global_position.y)
 	
 	if Input.get_action_raw_strength("melee"):
-		get_child(2).position=get_child(3).position
+		get_child(2).position=Vector2(0,0)
 		get_child(2).target_position=get_mouse_unit()*50
 		result=get_child(2).get_collider()
 		if result and result.has_meta("Enemy"):

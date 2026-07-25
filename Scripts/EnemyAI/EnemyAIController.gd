@@ -61,13 +61,11 @@ func checkPlayerVisible(playerPosition :Vector2) ->bool:
 	var displacementVector = playerPosition-rb.position
 	var distance = displacementVector.length()
 	if distance > detectionDistance:
-		print("too far")
 		return false
 	#then find the forward vector and using the dot product identity see if it is within a half fov angular distance
 	var forwardVector = Vector2.from_angle(rb.rotation)
 	var dp = (forwardVector).dot(displacementVector.normalized())
 	if dp <= cos(deg_to_rad(fov)/2):
-		print("can't see")
 		return false
 	
 	#run the raycast to check if the player is blocked by terrain

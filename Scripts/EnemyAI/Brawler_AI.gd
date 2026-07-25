@@ -66,7 +66,7 @@ func detectedBehaviour(delta:float) ->void:
 		#Insert melee attack and or damage logic here
 
 func onUnDetect() -> void:
-	tween.kill()
+	#tween.kill()
 	newvel = Vector2.from_angle(rb.rotation)*patrolSpeed * speedModifier
 	rb.linear_velocity = newvel
 	canBounce = true

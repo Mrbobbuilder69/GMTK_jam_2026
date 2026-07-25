@@ -1,3 +1,3 @@
 extends Node
 
-var blood = 0
+var blood = 100

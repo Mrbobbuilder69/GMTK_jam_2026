@@ -11,7 +11,7 @@ var footstep_distance_counter : float = 0.0
 var prev_position : Vector2
 var cur_speed : float
 var dash_cooldown_timer := 0.0
-
+var collision
 func _physics_process(delta: float) -> void:
 	var inputVec := Input.get_vector("Left","Right","Up","Down")
 	var mousePos = get_global_mouse_position()
@@ -36,6 +36,17 @@ func _physics_process(delta: float) -> void:
 	
 	prev_position = global_position
 	
+	collision=move_and_collide(Vector2(0,0)*inputVec*delta)
+	if collision and collision.get_collider().has_meta("Enemy"):
+		if cur_speed>100:
+			collision.get_collider().blood-=100
+		else:
+			Global.blood-=100
+	
+	if Global.blood<=0:
+		print("dead")
+		playerDeath()
+	
 	## Blood Increase
 	
 	##if Input.is_action_just_pressed("f"):
@@ -43,3 +54,7 @@ func _physics_process(delta: float) -> void:
 
 func _process(delta):
 	pass#print(str(Global.blood))
+	
+func playerDeath():
+	freeze=true
+	lock_rotation=true

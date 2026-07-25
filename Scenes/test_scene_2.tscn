@@ -52,3 +52,4 @@ shape = SubResource("RectangleShape2D_wcb3r")
 
 [node name="BrawlerEnemy" parent="." unique_id=932308662 instance=ExtResource("5_vmw76")]
 position = Vector2(306, -87)
+metadata/Enemy = false

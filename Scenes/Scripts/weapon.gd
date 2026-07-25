@@ -22,7 +22,7 @@ func _physics_process(delta):
 		get_child(2).target_position=get_mouse_unit()*50
 		result=get_child(2).get_collider()
 		if result and result.has_meta("Enemy"):
-			result.queue_free()
+			result.blood-=100
 		
 	get_child(3).clear_points()
 	get_child(3).add_point(get_child(2).position)

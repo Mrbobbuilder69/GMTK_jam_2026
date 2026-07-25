@@ -30,3 +30,17 @@ func spawn_decal():
 	var spawn_location: Vector2 = get_random_point_inside(p1, p2)
 	
 	decal_instance.set_position(spawn_location)
+
+func spawn_decal_at_position(spawnPos):
+	
+	var decal_instance: Node = decal.instantiate()
+	
+	add_child(decal_instance)
+	
+	var spawn_location: Vector2 = spawnPos
+	
+	decal_instance.set_position(spawn_location)
+
+
+func _on_brawler_enemy_death(deathPos) -> void:
+	spawn_decal_at_position(deathPos)

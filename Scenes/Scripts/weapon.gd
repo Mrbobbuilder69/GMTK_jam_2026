@@ -16,13 +16,14 @@ func _physics_process(delta):
 
 	if Input.get_action_raw_strength("attack"):
 		shoot.emit(position.x, position.y)
+		Global.blood-=100
 	
 	if Input.get_action_raw_strength("melee"):
 		get_child(2).position=Vector2(0,0)
 		get_child(2).target_position=get_mouse_unit()*50
 		result=get_child(2).get_collider()
 		if result and result.has_meta("Enemy"):
-			result.queue_free()
+			result.blood-=100
 		
 	get_child(3).clear_points()
 	get_child(3).add_point(get_child(2).position)

@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://ctgu1ijoxfidi" path="res://Scenes/cam.gd" id="2_pt0jc"]
 [ext_resource type="Texture2D" uid="uid://b46shyvcmigyb" path="res://icon.svg" id="3_vmw76"]
 [ext_resource type="Script" uid="uid://ceq7jc8gb121q" path="res://Scenes/Scripts/blood_spawn.gd" id="4_pt0jc"]
+[ext_resource type="PackedScene" uid="uid://o2g7ftervbl2" path="res://Scenes/brawler_enemy.tscn" id="5_vmw76"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dqqax"]
 bg_color = Color(0.28081146, 0.6756826, 0.6291818, 1)
@@ -17,6 +18,7 @@ size = Vector2(1645, 919)
 [node name="Node2D" type="Node2D" unique_id=1330387886]
 
 [node name="player" parent="." unique_id=421033602 instance=ExtResource("1_eg7ii")]
+unique_name_in_owner = true
 speed = 100.0
 
 [node name="cam" type="Camera2D" parent="." unique_id=564697421 node_paths=PackedStringArray("target")]
@@ -53,7 +55,7 @@ theme_override_styles/background = SubResource("StyleBoxFlat_dqqax")
 max_value = 200.0
 
 [node name="obstacle" type="StaticBody2D" parent="." unique_id=423191758]
-position = Vector2(-96, -61)
+position = Vector2(420, -178)
 
 [node name="sprite2D" type="Sprite2D" parent="obstacle" unique_id=1308029334]
 texture = ExtResource("3_vmw76")
@@ -67,3 +69,9 @@ script = ExtResource("4_pt0jc")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Blood Spawn" unique_id=300830166]
 position = Vector2(-29, 18)
 shape = SubResource("RectangleShape2D_wcb3r")
+
+[node name="BrawlerEnemy" parent="." unique_id=932308662 instance=ExtResource("5_vmw76")]
+position = Vector2(306, -87)
+metadata/Enemy = false
+
+[connection signal="death" from="BrawlerEnemy" to="Blood Spawn" method="_on_brawler_enemy_death"]

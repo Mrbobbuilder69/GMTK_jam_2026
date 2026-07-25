@@ -7,6 +7,9 @@ extends RigidBody2D
 @export var footstep_interval : float = 30.0
 @export var transition_speeds_speed : float = 10.0 # basically how fast speed updates between states
 
+@onready var bloodbar: ProgressBar = $"../cam/UI/PanelContainer/MarginContainer/Blood"
+
+
 var footstep_distance_counter : float = 0.0
 var prev_position : Vector2
 var cur_speed : float
@@ -42,4 +45,4 @@ func _physics_process(delta: float) -> void:
 		##blood = clamp(blood + 5, MIN_BLD, MAX_BLD)
 
 func _process(delta):
-	print(str(Global.blood))
+	bloodbar.value = Global.blood

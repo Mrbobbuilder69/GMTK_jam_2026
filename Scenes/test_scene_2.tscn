@@ -3,7 +3,10 @@
 [ext_resource type="PackedScene" uid="uid://c520ybe8rgo7x" path="res://Scenes/player.tscn" id="1_eg7ii"]
 [ext_resource type="Script" uid="uid://ctgu1ijoxfidi" path="res://Scenes/cam.gd" id="2_pt0jc"]
 [ext_resource type="Texture2D" uid="uid://b46shyvcmigyb" path="res://icon.svg" id="3_vmw76"]
-[ext_resource type="Script" uid="uid://ceq7jc8gb121q" path="res://Scripts/blood_spawn.gd" id="4_pt0jc"]
+[ext_resource type="Script" uid="uid://ceq7jc8gb121q" path="res://Scenes/Scripts/blood_spawn.gd" id="4_pt0jc"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dqqax"]
+bg_color = Color(0.28081146, 0.6756826, 0.6291818, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eaav3"]
 size = Vector2(130, 130)
@@ -21,16 +24,33 @@ script = ExtResource("2_pt0jc")
 target = NodePath("../player")
 follow_speed = 10.0
 
-[node name="UI" type="CanvasLayer" parent="cam" unique_id=871667315]
-
-[node name="Panel" type="Panel" parent="cam/UI" unique_id=120975989]
+[node name="UI" type="Control" parent="cam" unique_id=2141668710]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -576.0
+offset_top = -324.0
 offset_right = 576.0
 offset_bottom = 324.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="Label" type="Label" parent="cam/UI/Panel" unique_id=651206033]
-layout_mode = 0
-offset_right = 576.0
-offset_bottom = 324.0
+[node name="PanelContainer" type="PanelContainer" parent="cam/UI" unique_id=120709662]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_right = -893.0
+offset_bottom = 74.0
+grow_horizontal = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="cam/UI/PanelContainer" unique_id=1672286871]
+layout_mode = 2
+
+[node name="Blood" type="ProgressBar" parent="cam/UI/PanelContainer/MarginContainer" unique_id=407257228]
+layout_mode = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_dqqax")
+max_value = 200.0
 
 [node name="obstacle" type="StaticBody2D" parent="." unique_id=423191758]
 position = Vector2(-96, -61)
@@ -45,5 +65,5 @@ shape = SubResource("RectangleShape2D_eaav3")
 script = ExtResource("4_pt0jc")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Blood Spawn" unique_id=300830166]
-position = Vector2(-28.5, 19.5)
+position = Vector2(-29, 18)
 shape = SubResource("RectangleShape2D_wcb3r")

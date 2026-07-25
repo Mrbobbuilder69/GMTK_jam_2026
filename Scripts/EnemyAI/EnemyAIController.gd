@@ -1,5 +1,6 @@
 @abstract class_name EnemyAI extends RigidBody2D
 ##classes and enums
+signal death(deathPos)
 enum AIState {patrol,detected}
 class RaycastHitData:
 	var collider
@@ -48,6 +49,7 @@ func _ready() -> void:
 func onDeath():
 	print("summon corpse and blood stuff here and do other death things")
 	freeze=true
+	death.emit(position)
 
 func onDamage(damangeAmount:float):
 	print("particles and other damage effect stuff")

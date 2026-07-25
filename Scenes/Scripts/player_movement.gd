@@ -42,4 +42,4 @@ func _physics_process(delta: float) -> void:
 		##blood = clamp(blood + 5, MIN_BLD, MAX_BLD)
 
 func _process(delta):
-	print(str(Global.blood))
+	pass#print(str(Global.blood))

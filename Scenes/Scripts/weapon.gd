@@ -30,8 +30,8 @@ func _physics_process(delta):
 		
 func get_mouse_unit():
 	var mouseDir=Vector2(0,0)
-	var distX=get_global_mouse_position().x-position.x
-	var distY=get_global_mouse_position().y-position.y
+	var distX=position.x
+	var distY=position.y
 	if position.x>get_global_mouse_position().x:
 		mouseDir.x=-1
 	else:

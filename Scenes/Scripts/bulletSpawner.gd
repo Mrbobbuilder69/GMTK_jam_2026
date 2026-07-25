@@ -29,20 +29,16 @@ func _on_weapon_shoot(posX, posY):
 		print(mouseNormal)
 		add_child(bullet)
 		get_child(0).position=Vector2(0,0)
-		get_child(0).linear_velocity=Vector2(50000, 50000)*mouseNormal*deltaTime
+		get_child(0).linear_velocity=50000*get_mouse_unit()*deltaTime
 
 func get_mouse_unit():
 	var mouseDir=Vector2(0,0)
-	var distX=get_global_mouse_position().x-position.x
-	var distY=get_global_mouse_position().y-position.y
-	if position.x>get_global_mouse_position().x:
-		mouseDir.x=-1
+	var distX=global_position.x-get_global_mouse_position().x
+	var distY=global_position.y-get_global_mouse_position().y
+	if distX<0:
+		mouseDir=Vector2(1,1)
 	else:
-		mouseDir.x=1
-	if position.y>get_global_mouse_position().y:
-		mouseDir.y=mouseDir.x
-	else:
-		mouseDir.y=-mouseDir.x*-1
+		mouseDir=Vector2(-1,-1)
 	var tan=distY/distX
 	var unitVecXSquare=1/(tan**2+1)
 	var unitVecX=unitVecXSquare**0.5

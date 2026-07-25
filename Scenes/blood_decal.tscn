@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://cu25txrw3ypvd"]
+
+[ext_resource type="Script" uid="uid://c4xe2di5cib3k" path="res://blood_decal.gd" id="1_w7sbx"]
+[ext_resource type="Texture2D" uid="uid://b46shyvcmigyb" path="res://icon.svg" id="2_wvsfb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dqqax"]
+
+[node name="Blood_Decal" type="Node2D" unique_id=558803257]
+script = ExtResource("1_w7sbx")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=236367508]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=7292680]
+shape = SubResource("RectangleShape2D_dqqax")
+
+[node name="Sprite2D" type="Sprite2D" parent="Area2D" unique_id=208319252]
+texture = ExtResource("2_wvsfb")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

@@ -28,5 +28,11 @@ func _physics_process(delta: float) -> void:
 		footstep_distance_counter = 0.0
 	
 	prev_position = global_position
+	
+	## Blood Increase
+	
+	##if Input.is_action_just_pressed("f"):
+		##blood = clamp(blood + 5, MIN_BLD, MAX_BLD)
 
-	#peepeepoopoo
+func _process(delta):
+	print(str(Global.blood))

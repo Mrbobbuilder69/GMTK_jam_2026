@@ -15,6 +15,7 @@ gravity_scale = 0.0
 inertia = 1.0
 script = ExtResource("1_cvnsp")
 speed = 10000.0
+metadata/Player = true
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=732512854]
 z_index = 1

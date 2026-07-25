@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://qugwti6vew40"]
+
+[ext_resource type="Script" uid="uid://ddgqabxhpf63p" path="res://Scenes/Scripts/cannon.gd" id="1_v540r"]
+[ext_resource type="Texture2D" uid="uid://cxwlh570dokcq" path="res://Assets/White-Circle-PNG-HD-Image-2758320687.png" id="2_0c3bx"]
+[ext_resource type="Script" uid="uid://dlv28dtqdwdxn" path="res://Scenes/Scripts/EnemyAI/enemyBulletSpawner.gd" id="3_v540r"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2pskm"]
+radius = 38.327538
+
+[node name="CannonEnemy" type="RigidBody2D" unique_id=59570317 node_paths=PackedStringArray("rb", "ray2D")]
+gravity_scale = 0.0
+script = ExtResource("1_v540r")
+rb = NodePath(".")
+ray2D = NodePath("RayCast2D")
+metadata/Enemy = false
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=944866451]
+position = Vector2(-0.49999547, -0.999997)
+scale = Vector2(0.07519531, 0.072265625)
+texture = ExtResource("2_0c3bx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2136802873]
+shape = SubResource("CircleShape2D_2pskm")
+
+[node name="RayCast2D" type="RayCast2D" parent="." unique_id=1099184532]
+
+[node name="Line2D" type="Line2D" parent="." unique_id=984476588]
+
+[node name="bullet spawner" type="Node2D" parent="." unique_id=1803732324]
+script = ExtResource("3_v540r")
+
+[connection signal="shoot" from="." to="bullet spawner" method="_on_cannon_enemy_shoot"]

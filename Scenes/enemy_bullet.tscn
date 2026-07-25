@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://dyx82jlclenfo"]
+
+[ext_resource type="Script" uid="uid://bw81nlh76k344" path="res://Scenes/Scripts/enemy bullet.gd" id="1_54jiv"]
+[ext_resource type="Texture2D" uid="uid://cxwlh570dokcq" path="res://Assets/White-Circle-PNG-HD-Image-2758320687.png" id="2_b6yqb"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5jf5c"]
+radius = 8.544
+
+[node name="enemy bullet" type="RigidBody2D" unique_id=2089244781]
+gravity_scale = 0.0
+lock_rotation = true
+freeze = true
+script = ExtResource("1_54jiv")
+metadata/EnemyBullet = true
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=915088281]
+scale = Vector2(-0.0173962, -0.017187)
+texture = ExtResource("2_b6yqb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1667038498]
+shape = SubResource("CircleShape2D_5jf5c")

@@ -24,7 +24,7 @@ func _physics_process(delta):
 func _on_weapon_shoot(posX, posY):
 	position=Vector2(posX, posY)
 	if get_child_count()==0 and bulletTimer<=0:
-		bulletTimer=0.2
+		bulletTimer=0.5
 		mouseNormal=get_mouse_unit()
 		print(mouseNormal)
 		add_child(bullet)

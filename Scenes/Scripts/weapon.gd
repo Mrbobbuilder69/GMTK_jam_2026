@@ -15,7 +15,7 @@ func _physics_process(delta):
 		lastInput=inputVec
 
 	if Input.get_action_raw_strength("attack"):
-		shoot.emit(global_position.x, global_position.y)
+		shoot.emit(position.x, position.y)
 	
 	if Input.get_action_raw_strength("melee"):
 		get_child(2).position=Vector2(0,0)

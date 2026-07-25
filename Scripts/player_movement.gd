@@ -2,24 +2,31 @@ extends RigidBody2D
 
 @export var speed : float = 100.0
 @export var sprint_speed : float = 150.0
+@export var dash_speed : float = 300.0
+@export var dash_cooldown : float = 1.0
 @export var footstep_interval : float = 30.0
+@export var transition_speeds_speed : float = 10.0 # basically how fast speed updates between states
 
 var footstep_distance_counter : float = 0.0
 var prev_position : Vector2
+var cur_speed : float
+var dash_cooldown_timer := 0.0
 
 func _physics_process(delta: float) -> void:
 	var inputVec := Input.get_vector("Left","Right","Up","Down")
 	var mousePos = get_global_mouse_position()
 	
-	var cur_speed : float
 	if Input.is_action_pressed("Sprint"):
-		cur_speed = sprint_speed
+		cur_speed = lerpf(cur_speed, sprint_speed, min(transition_speeds_speed * delta, 1.0))
 	else:
-		cur_speed = speed
+		cur_speed = lerpf(cur_speed, speed, min(transition_speeds_speed * delta, 1.0))
 	linear_velocity = cur_speed*inputVec
 	look_at(mousePos)
 	
-	
+	dash_cooldown_timer -= delta
+	if dash_cooldown_timer <= 0.0 and Input.is_action_just_pressed("Dash"):
+		cur_speed = dash_speed
+		dash_cooldown_timer = dash_cooldown
 	
 	footstep_distance_counter += global_position.distance_to(prev_position)
 	if footstep_distance_counter > footstep_interval * (cur_speed/speed) and inputVec != Vector2.ZERO:

@@ -10,10 +10,7 @@ size = Vector2(130, 130)
 [node name="Node2D" type="Node2D" unique_id=1330387886]
 
 [node name="player" parent="." unique_id=421033602 instance=ExtResource("1_3dogw")]
-speed = 150.0
-sprint_speed = 200.0
-dash_speed = 1000.0
-dash_cooldown = 0.5
+speed = 100.0
 
 [node name="cam" type="Camera2D" parent="." unique_id=564697421 node_paths=PackedStringArray("target")]
 script = ExtResource("2_r5l72")

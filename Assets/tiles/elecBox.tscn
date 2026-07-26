@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://bgf7ckcd10tml"]
+
+[ext_resource type="Texture2D" uid="uid://bfeijuklpij6c" path="res://Assets/tiles/elecBox.png" id="1_cre2d"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mssme"]
+size = Vector2(1.6666667, 3.166667)
+
+[node name="RigidBody2D" type="StaticBody2D" unique_id=198578575]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1151780785]
+scale = Vector2(0.16, 0.16)
+texture = ExtResource("1_cre2d")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=269869756]
+position = Vector2(1, 0.5000007)
+scale = Vector2(6, 6)
+shape = SubResource("RectangleShape2D_mssme")

@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://b3wu86t0u80oa"]
+
+[ext_resource type="Texture2D" uid="uid://bt0nu2meajf6w" path="res://Assets/tiles/traffic1.png" id="1_lxgfp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mssme"]
+size = Vector2(3, 4.5)
+
+[node name="RigidBody2D" type="StaticBody2D" unique_id=198578575]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1151780785]
+scale = Vector2(0.16, 0.16)
+texture = ExtResource("1_lxgfp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=269869756]
+scale = Vector2(4, 4)
+shape = SubResource("RectangleShape2D_mssme")

@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://cmnv06fh32g8s"]
+
+[ext_resource type="Texture2D" uid="uid://c5yplfl43yv46" path="res://Assets/tiles/benis.png" id="1_x6h2l"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mssme"]
+size = Vector2(30.75, 19.75)
+
+[node name="RigidBody2D" type="StaticBody2D" unique_id=198578575]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1151780785]
+scale = Vector2(0.16, 0.16)
+texture = ExtResource("1_x6h2l")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=269869756]
+position = Vector2(0.5, -2.5)
+scale = Vector2(4, 4)
+shape = SubResource("RectangleShape2D_mssme")

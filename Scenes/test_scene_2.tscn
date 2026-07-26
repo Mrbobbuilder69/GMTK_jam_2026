@@ -128,13 +128,14 @@ shape = SubResource("RectangleShape2D_wcb3r")
 
 [node name="BrawlerEnemy" parent="." unique_id=932308662 instance=ExtResource("5_vmw76")]
 position = Vector2(306, -87)
-rayScanDistance = 200.0
+rayScanDistance = 50.0
 metadata/Enemy = false
 
 [node name="CannonEnemy" type="RigidBody2D" parent="." unique_id=59570317 node_paths=PackedStringArray("rb", "ray2D")]
 position = Vector2(306, -87)
 gravity_scale = 0.0
 script = ExtResource("6_njadv")
+rayScanDistance = 50.0
 rb = NodePath(".")
 ray2D = NodePath("RayCast2D")
 metadata/Enemy = false

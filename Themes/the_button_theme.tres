@@ -1,0 +1,33 @@
+[gd_resource type="Theme" format=3 uid="uid://kjeod85d4rnx"]
+
+[ext_resource type="FontFile" uid="uid://clrq2jvljlcq5" path="res://Themes/absender1.ttf" id="1_mb0ci"]
+[ext_resource type="StyleBox" uid="uid://cbppbnqwt5ujx" path="res://Themes/button_theme.tres" id="2_ccfgx"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oqgbo"]
+bg_color = Color(0.7923634, 0.18700796, 0.17987934, 1)
+border_width_bottom = 8
+border_color = Color(0.5174293, 0.09818158, 0.098143674, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_size = 25
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mu6r8"]
+bg_color = Color(0.688144, 0.1471841, 0.14604822, 1)
+border_width_top = 8
+border_color = Color(0.4, 0.06800001, 0.06800001, 0)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_color = Color(0.1288298, 0.12882978, 0.12882978, 0.6)
+shadow_size = 11
+shadow_offset = Vector2(0, 5.5)
+
+[resource]
+Button/font_sizes/font_size = 20
+Button/fonts/font = ExtResource("1_mb0ci")
+Button/styles/hover = SubResource("StyleBoxFlat_oqgbo")
+Button/styles/normal = ExtResource("2_ccfgx")
+Button/styles/pressed = SubResource("StyleBoxFlat_mu6r8")

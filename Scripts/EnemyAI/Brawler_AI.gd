@@ -10,16 +10,13 @@ class_name BrawlerAI extends EnemyAI
 #private vars
 var canBounce := true
 var newvel:Vector2
-
+var hitSmth=false
 func _ready() -> void:
 	rb.linear_velocity = (Vector2.from_angle(rb.rotation))*patrolSpeed
 	super._ready()
 
 ##Bounces around a closed room, might pull this up to the enemy controller
 func patrolBehaviour(delta:float) ->void:
-	get_child(3).add_point(Vector2(0,0))
-	get_child(3).add_point(Vector2(0,10000))
-	get_child(3).clear_points()
 	if ray2D == null:
 		print("Ray object not set in inspector")
 		return

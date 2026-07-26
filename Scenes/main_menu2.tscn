@@ -1,0 +1,252 @@
+[gd_scene format=3 uid="uid://bajlor7l3h8tf"]
+
+[ext_resource type="Script" uid="uid://bqh8qtal1j7sx" path="res://Scripts/main_menu.gd" id="1_an4tk"]
+[ext_resource type="FontFile" uid="uid://c3uhvh4p7845y" path="res://Themes/Verve.ttf" id="1_m5bvd"]
+[ext_resource type="Theme" uid="uid://kjeod85d4rnx" path="res://Themes/the_button_theme.tres" id="1_oqgbo"]
+[ext_resource type="PackedScene" uid="uid://dpm1o2owcsanb" path="res://Assets/MainMenu_Building.glb" id="3_an4tk"]
+[ext_resource type="LabelSettings" uid="uid://4osqx2y6qa1a" path="res://Themes/label.tres" id="5_6utrt"]
+
+[sub_resource type="Environment" id="Environment_6utrt"]
+background_mode = 1
+
+[sub_resource type="LabelSettings" id="LabelSettings_m5bvd"]
+font = ExtResource("1_m5bvd")
+font_size = 64
+shadow_size = 3
+shadow_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n8wo2"]
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.41674656, 0.41674662, 0.41674632, 1)
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="LabelSettings" id="LabelSettings_j3pel"]
+font = ExtResource("1_m5bvd")
+font_size = 32
+shadow_color = Color(0, 0, 0, 1)
+
+[node name="MainMenu" type="Node3D" unique_id=1504191201]
+
+[node name="ENV" type="Node3D" parent="." unique_id=1924125259]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="ENV" unique_id=70457397]
+environment = SubResource("Environment_6utrt")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="ENV" unique_id=1799445402]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+visible = false
+shadow_enabled = true
+
+[node name="MainMenu" type="Control" parent="." unique_id=674576057]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_an4tk")
+
+[node name="Label" type="Label" parent="MainMenu" unique_id=1830907811]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.284
+anchor_top = 0.13700001
+anchor_right = 0.716
+anchor_bottom = 0.272
+offset_left = -0.16799927
+offset_top = 0.2239914
+offset_right = 0.16796875
+offset_bottom = -0.25601196
+grow_horizontal = 2
+grow_vertical = 2
+text = "Count Down"
+label_settings = SubResource("LabelSettings_m5bvd")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Start" type="Button" parent="MainMenu" unique_id=1494479346]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.35200003
+anchor_top = 0.363
+anchor_right = 0.648
+anchor_bottom = 0.432
+offset_left = 0.49597168
+offset_top = -0.22399902
+offset_right = -0.49597168
+offset_bottom = 0.06399536
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_oqgbo")
+text = "Start"
+
+[node name="Settings" type="Button" parent="MainMenu" unique_id=333648749]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.35200003
+anchor_top = 0.363
+anchor_right = 0.648
+anchor_bottom = 0.432
+offset_left = 0.49597168
+offset_top = 59.776
+offset_right = -0.49597168
+offset_bottom = 60.063995
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_oqgbo")
+text = "Settings"
+
+[node name="Quit" type="Button" parent="MainMenu" unique_id=3278428]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.35200003
+anchor_top = 0.363
+anchor_right = 0.648
+anchor_bottom = 0.432
+offset_left = 0.49597168
+offset_top = 119.776
+offset_right = -0.49597168
+offset_bottom = 120.063995
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_oqgbo")
+text = "Quit"
+
+[node name="MainMenu_Building" parent="." unique_id=1367805977 instance=ExtResource("3_an4tk")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -1.00431, 0, 4.7120886)
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1831013584]
+transform = Transform3D(0.6819984, -0.21992229, -0.6975044, 0, 0.95371693, -0.3007058, 0.7313537, 0.20508087, 0.6504334, -4.75, 10.435, 9.585)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="." unique_id=1209092688]
+transform = Transform3D(0.874506, -0.4677897, -0.12810951, 0.38902217, 0.8342607, -0.39073113, 0.28965676, 0.29185927, 0.9115466, -4.475, 8.775, 13.57)
+light_color = Color(1, 0.81, 0.81, 1)
+light_energy = 6.0
+spot_range = 15.0
+spot_attenuation = 0.9
+spot_angle = 32.0
+
+[node name="Settings" type="Control" parent="." unique_id=1959612542]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+
+[node name="Panel" type="Panel" parent="Settings" unique_id=1291910111]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.30400002
+anchor_top = 0.272
+anchor_right = 0.69600004
+anchor_bottom = 0.72800004
+offset_left = -0.20800781
+offset_top = -0.25601196
+offset_right = 0.20794678
+offset_bottom = 0.25598145
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_n8wo2")
+
+[node name="Label" type="Label" parent="Settings/Panel" unique_id=1655883480]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.091000006
+anchor_top = 0.064
+anchor_right = 0.45800003
+anchor_bottom = 0.38200003
+offset_left = -0.13200378
+offset_top = 0.055999756
+offset_right = -0.016021729
+offset_bottom = -0.072006226
+grow_vertical = 2
+text = "Volume"
+label_settings = SubResource("LabelSettings_j3pel")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Settings/Panel" unique_id=340833642]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.08800001
+anchor_top = 0.324
+anchor_right = 0.45800003
+anchor_bottom = 0.67600006
+offset_left = 0.22399521
+offset_top = 20.096
+offset_right = -0.016021729
+offset_bottom = -20.096024
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Settings/Panel/VBoxContainer" unique_id=213302583]
+layout_mode = 2
+text = "Master"
+label_settings = ExtResource("5_6utrt")
+horizontal_alignment = 1
+
+[node name="Master" type="HSlider" parent="Settings/Panel/VBoxContainer" unique_id=1499673547]
+layout_mode = 2
+max_value = 1.0
+step = 0.001
+
+[node name="Label2" type="Label" parent="Settings/Panel/VBoxContainer" unique_id=1606956897]
+layout_mode = 2
+text = "Music"
+label_settings = ExtResource("5_6utrt")
+horizontal_alignment = 1
+
+[node name="Music" type="HSlider" parent="Settings/Panel/VBoxContainer" unique_id=1734603948]
+layout_mode = 2
+max_value = 1.0
+step = 0.001
+
+[node name="Label3" type="Label" parent="Settings/Panel/VBoxContainer" unique_id=760495037]
+layout_mode = 2
+text = "SFX"
+label_settings = ExtResource("5_6utrt")
+horizontal_alignment = 1
+
+[node name="Sound" type="HSlider" parent="Settings/Panel/VBoxContainer" unique_id=1741824290]
+layout_mode = 2
+max_value = 1.0
+step = 0.001
+
+[node name="Label2" type="Label" parent="Settings/Panel" unique_id=1584766670]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.208
+anchor_top = 0.31100002
+anchor_right = 0.33800003
+anchor_bottom = 0.38900003
+offset_left = 126.984
+offset_top = -73.05601
+offset_right = 234.22395
+offset_bottom = -2.1440048
+grow_vertical = 2
+text = "Fullscreen"
+label_settings = SubResource("LabelSettings_j3pel")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CheckButton" type="CheckButton" parent="Settings" unique_id=990374782]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.53000003
+anchor_top = 0.41400003
+anchor_right = 0.606
+anchor_bottom = 0.48800004
+offset_left = -0.5600586
+offset_top = -0.2720337
+offset_right = -44.112
+offset_bottom = -24.22403
+scale = Vector2(2, 2)
+
+[connection signal="pressed" from="MainMenu/Start" to="MainMenu" method="_on_start_pressed"]
+[connection signal="pressed" from="MainMenu/Settings" to="MainMenu" method="_on_settings_pressed"]
+[connection signal="pressed" from="MainMenu/Quit" to="MainMenu" method="_on_quit_pressed"]
+[connection signal="value_changed" from="Settings/Panel/VBoxContainer/Master" to="MainMenu" method="_on_master_value_changed"]
+[connection signal="value_changed" from="Settings/Panel/VBoxContainer/Music" to="MainMenu" method="_on_music_value_changed"]
+[connection signal="value_changed" from="Settings/Panel/VBoxContainer/Sound" to="MainMenu" method="_on_sound_value_changed"]
+[connection signal="toggled" from="Settings/CheckButton" to="MainMenu" method="_on_check_button_toggled"]

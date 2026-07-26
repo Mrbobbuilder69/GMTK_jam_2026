@@ -67,7 +67,7 @@ shape = SubResource("RectangleShape2D_eaav3")
 script = ExtResource("4_pt0jc")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Blood Spawn" unique_id=300830166]
-position = Vector2(-29, 18)
+position = Vector2(2, 1)
 shape = SubResource("RectangleShape2D_wcb3r")
 
 [node name="BrawlerEnemy" parent="." unique_id=932308662 instance=ExtResource("5_vmw76")]

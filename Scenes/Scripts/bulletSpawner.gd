@@ -30,6 +30,13 @@ func _on_weapon_shoot(posX, posY):
 		add_child(bullet)
 		get_child(0).position=Vector2(0,0)
 		get_child(0).linear_velocity=50000*get_mouse_unit()*deltaTime
+		
+		#SFX
+		Effects.spawn_sfx("res://Sound/gunshot.wav", self)
+		Effects.spawn_particles("res://ParticleEffects/gunshot.tscn", global_position, get_parent())
+		print (get_node("/root/Node2D/cam") == null)
+		if get_node("/root/Node2D/cam"):
+			get_node("/root/Node2D/cam").shake(5.0)
 
 func get_mouse_unit():
 	var mouseDir=Vector2(0,0)

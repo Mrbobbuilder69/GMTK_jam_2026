@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://b5kvkaduki84t"]
+[gd_scene format=3 uid="uid://b5kvkaduki84t"]
 
 [ext_resource type="PackedScene" uid="uid://c520ybe8rgo7x" path="res://Scenes/player.tscn" id="1_3dogw"]
 [ext_resource type="Script" uid="uid://bosyd5yo7c6rg" path="res://Scenes/Scripts/weapon.gd" id="2_hb2xm"]
-[ext_resource type="Script" uid="uid://ctgu1ijoxfidi" path="res://Scenes/cam.gd" id="2_r5l72"]
+[ext_resource type="Script" uid="uid://ctgu1ijoxfidi" path="res://Scenes/Scripts/cam.gd" id="2_r5l72"]
 [ext_resource type="Texture2D" uid="uid://b46shyvcmigyb" path="res://icon.svg" id="3_50ct6"]
 [ext_resource type="Script" uid="uid://dkj8o6amowfqq" path="res://Scenes/Scripts/bulletSpawner.gd" id="5_ak5v8"]
+
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ak5v8"]
 

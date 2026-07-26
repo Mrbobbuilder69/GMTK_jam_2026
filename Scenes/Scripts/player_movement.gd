@@ -9,7 +9,6 @@ extends RigidBody2D
 
 @onready var bloodbar: ProgressBar = $"../cam/UI/PanelContainer/MarginContainer/Blood"
 
-
 var footstep_distance_counter : float = 0.0
 var prev_position : Vector2
 var cur_speed : float
@@ -28,6 +27,7 @@ func _physics_process(delta: float) -> void:
 	
 	dash_cooldown_timer -= delta
 	if dash_cooldown_timer <= 0.0 and Input.is_action_just_pressed("Dash"):
+		Effects.spawn_sfx("res://Sound/whoosh.wav", self, 0.0, 1.5)
 		cur_speed = dash_speed
 		dash_cooldown_timer = dash_cooldown
 	

@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://dq4a7hgxphqdw"]
+
+[ext_resource type="Script" uid="uid://b05lloda0ynxr" path="res://Scenes/Scripts/enemy_spawner.gd" id="1_8h7h8"]
+[ext_resource type="PackedScene" uid="uid://o2g7ftervbl2" path="res://Scenes/brawler_enemy.tscn" id="2_cdqhx"]
+
+[node name="enemy_spawner" type="Node2D" unique_id=1425821161]
+script = ExtResource("1_8h7h8")
+enemies = Array[PackedScene]([ExtResource("2_cdqhx")])

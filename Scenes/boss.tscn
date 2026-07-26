@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://b4lxko6luyfrd"]
+
+[ext_resource type="Texture2D" uid="uid://b46shyvcmigyb" path="res://icon.svg" id="1_0154r"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_eaav3"]
+radius = 58.45
+
+[node name="boss" type="RigidBody2D" unique_id=197500196]
+gravity_scale = 0.0
+freeze = true
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=292195930]
+modulate = Color(0.76821244, 0.21048233, 0.29708818, 1)
+texture = ExtResource("1_0154r")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=407865184]
+shape = SubResource("CircleShape2D_eaav3")

@@ -1,22 +1,45 @@
 [gd_scene format=3 uid="uid://o2g7ftervbl2"]
 
 [ext_resource type="Script" uid="uid://bltkav2xt470b" path="res://Scripts/EnemyAI/Brawler_AI.gd" id="1_u553n"]
-[ext_resource type="Texture2D" uid="uid://cxwlh570dokcq" path="res://Assets/White-Circle-PNG-HD-Image-2758320687.png" id="2_253qb"]
+[ext_resource type="Texture2D" uid="uid://v314jdxyk1mw" path="res://Assets/Time thief spritesheet.png" id="2_u553n"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_253qb"]
+atlas = ExtResource("2_u553n")
+region = Rect2(1932, 0, 322, 342)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yr1uu"]
+atlas = ExtResource("2_u553n")
+region = Rect2(2254, 0, 322, 342)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mssme"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_253qb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yr1uu")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2pskm"]
 radius = 38.327538
 
-[node name="BrawlerEnemy" type="RigidBody2D" unique_id=932308662 node_paths=PackedStringArray("rb", "ray2D")]
+[node name="BrawlerEnemy" type="RigidBody2D" unique_id=932308662 node_paths=PackedStringArray("anim", "rb", "ray2D")]
 gravity_scale = 0.0
 script = ExtResource("1_u553n")
+anim = NodePath("Sprite2D")
 rb = NodePath(".")
 ray2D = NodePath("RayCast2D")
 detectionDistance = 1000.0
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1734397455]
-position = Vector2(-0.49999547, -0.999997)
-scale = Vector2(0.07519531, 0.072265625)
-texture = ExtResource("2_253qb")
+[node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=681042637]
+position = Vector2(-23, -1)
+scale = Vector2(0.375, 0.36)
+sprite_frames = SubResource("SpriteFrames_mssme")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=679839867]
 shape = SubResource("CircleShape2D_2pskm")

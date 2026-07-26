@@ -6,8 +6,8 @@
 [ext_resource type="Script" uid="uid://ceq7jc8gb121q" path="res://Scenes/Scripts/blood_spawn.gd" id="4_pt0jc"]
 [ext_resource type="PackedScene" uid="uid://o2g7ftervbl2" path="res://Scenes/brawler_enemy.tscn" id="5_vmw76"]
 [ext_resource type="Script" uid="uid://ddgqabxhpf63p" path="res://Scenes/Scripts/cannon.gd" id="6_njadv"]
-[ext_resource type="Texture2D" uid="uid://cxwlh570dokcq" path="res://Assets/White-Circle-PNG-HD-Image-2758320687.png" id="7_i2ifw"]
 [ext_resource type="Script" uid="uid://dlv28dtqdwdxn" path="res://Scenes/Scripts/EnemyAI/enemyBulletSpawner.gd" id="8_f5elb"]
+[ext_resource type="Texture2D" uid="uid://v314jdxyk1mw" path="res://Assets/Time thief spritesheet.png" id="8_miijk"]
 [ext_resource type="PackedScene" uid="uid://b478nm53d4ea0" path="res://Assets/tiles/sidewalk.tscn" id="9_gw4es"]
 [ext_resource type="PackedScene" uid="uid://htxiisxaoaxb" path="res://Assets/tiles/road1.tscn" id="10_6ftty"]
 [ext_resource type="PackedScene" uid="uid://brjcf4jau23iv" path="res://Assets/tiles/road3.tscn" id="11_27hh1"]
@@ -38,6 +38,28 @@ size = Vector2(1645, 919)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2pskm"]
 radius = 38.327538
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_253qb"]
+atlas = ExtResource("8_miijk")
+region = Rect2(1932, 0, 322, 342)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yr1uu"]
+atlas = ExtResource("8_miijk")
+region = Rect2(2254, 0, 322, 342)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7wsrj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_253qb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yr1uu")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_h7x3j"]
 resource_name = "floors"
@@ -131,19 +153,15 @@ position = Vector2(306, -87)
 rayScanDistance = 50.0
 metadata/Enemy = false
 
-[node name="CannonEnemy" type="RigidBody2D" parent="." unique_id=59570317 node_paths=PackedStringArray("rb", "ray2D")]
+[node name="CannonEnemy" type="RigidBody2D" parent="." unique_id=59570317 node_paths=PackedStringArray("anim", "rb", "ray2D")]
 position = Vector2(306, -87)
 gravity_scale = 0.0
 script = ExtResource("6_njadv")
 rayScanDistance = 50.0
+anim = NodePath("Sprite2D")
 rb = NodePath(".")
 ray2D = NodePath("RayCast2D")
 metadata/Enemy = false
-
-[node name="Sprite2D" type="Sprite2D" parent="CannonEnemy" unique_id=944866451]
-position = Vector2(-0.49999547, -0.999997)
-scale = Vector2(0.07519531, 0.072265625)
-texture = ExtResource("7_i2ifw")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CannonEnemy" unique_id=2136802873]
 shape = SubResource("CircleShape2D_2pskm")
@@ -154,6 +172,11 @@ shape = SubResource("CircleShape2D_2pskm")
 
 [node name="bullet spawner" type="Node2D" parent="CannonEnemy" unique_id=1803732324]
 script = ExtResource("8_f5elb")
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="CannonEnemy" unique_id=942787981]
+position = Vector2(-23, -1)
+scale = Vector2(0.375, 0.36)
+sprite_frames = SubResource("SpriteFrames_7wsrj")
 
 [node name="floors" type="TileMapLayer" parent="." unique_id=1444027486]
 z_index = -1

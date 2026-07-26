@@ -7,18 +7,25 @@ extends RigidBody2D
 @export var footstep_interval : float = 30.0
 @export var transition_speeds_speed : float = 10.0 # basically how fast speed updates between states
 @export var audioPlayer: AudioStreamPlayer2D
-
+@export var anim: AnimatedSprite2D
 var footstep_distance_counter : float = 0.0
 var prev_position : Vector2
 var cur_speed : float
 var dash_cooldown_timer := 0.0
 var collision
+var punching=false
+var punchTimer=0
 func ready():
 	audioPlayer.play()
 func _physics_process(delta: float) -> void:
 	var inputVec := Input.get_vector("Left","Right","Up","Down")
 	var mousePos = get_global_mouse_position()
-	
+	if punchTimer>0:
+		punchTimer-=delta
+	if inputVec==Vector2.ZERO and punchTimer<=0 and cur_speed<=110:
+		anim.play("idle")
+	elif punchTimer<=0 and cur_speed<=110:
+		anim.play("run")
 	if Input.is_action_pressed("Sprint"):
 		cur_speed = lerpf(cur_speed, sprint_speed, min(transition_speeds_speed * delta, 1.0))
 	else:
@@ -45,7 +52,9 @@ func _physics_process(delta: float) -> void:
 			collision.get_collider().blood-=100
 		else:
 			Global.blood-=100
-	
+	if Input.get_action_strength("melee")!=0:
+		punchTimer=1
+		anim.play("punch")
 	if Global.blood<=0:
 		print("dead")
 		playerDeath()

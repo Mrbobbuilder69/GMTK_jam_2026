@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://bnyu5byrxvtk1"]
+
+[ext_resource type="Texture2D" uid="uid://b4betwppajjki" path="res://Assets/tiles/blood sidewalk.png" id="1_b5j2e"]
+
+[node name="sidewalk" type="Sprite2D" unique_id=1151572371]
+scale = Vector2(0.16, 0.16)
+texture = ExtResource("1_b5j2e")

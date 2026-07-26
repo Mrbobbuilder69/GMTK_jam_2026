@@ -3,5 +3,5 @@
 [ext_resource type="Texture2D" uid="uid://c2tuowu0ijcqf" path="res://Assets/tiles/sidewalk.png" id="1_js2tl"]
 
 [node name="sidewalk" type="Sprite2D" unique_id=1151572371]
-scale = Vector2(0.04, 0.04)
+scale = Vector2(0.16, 0.16)
 texture = ExtResource("1_js2tl")

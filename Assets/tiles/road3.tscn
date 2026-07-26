@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://brjcf4jau23iv"]
+
+[ext_resource type="Texture2D" uid="uid://dh3o55evyeqc7" path="res://Assets/tiles/road3.png" id="1_8t458"]
+
+[node name="Road3" type="Sprite2D" unique_id=978082299]
+scale = Vector2(0.42, 0.42)
+texture = ExtResource("1_8t458")

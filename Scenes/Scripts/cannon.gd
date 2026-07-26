@@ -6,6 +6,8 @@ class_name Cannon extends EnemyAI
 @export var patrolRotationVelocity := float(2)
 @export var detectedRotationVelocity := float(4)
 @export var meleeDistance := float(30)
+@export var anim:AnimatedSprite2D
+
 #private vars
 var canBounce := true
 var newvel:Vector2
@@ -17,9 +19,8 @@ func _ready() -> void:
 
 ##Bounces around a closed room, might pull this up to the enemy controller
 func patrolBehaviour(delta:float) ->void:
-	get_child(3).add_point(Vector2(0,0))
-	get_child(3).add_point(Vector2(0,10000))
-	get_child(3).clear_points()
+	anim.play("default")
+
 	if ray2D == null:
 		print("Ray object not set in inspector")
 		return

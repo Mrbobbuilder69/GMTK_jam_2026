@@ -7,6 +7,7 @@ class_name BrawlerAI extends EnemyAI
 @export var patrolRotationVelocity := float(2)
 @export var detectedRotationVelocity := float(4)
 @export var meleeDistance := float(30)
+@export var anim:AnimatedSprite2D
 #private vars
 var canBounce := true
 var newvel:Vector2
@@ -17,6 +18,7 @@ func _ready() -> void:
 
 ##Bounces around a closed room, might pull this up to the enemy controller
 func patrolBehaviour(delta:float) ->void:
+	anim.play("default")
 	if move_and_collide(Vector2.ZERO):
 		print("colliding")
 	if ray2D == null:

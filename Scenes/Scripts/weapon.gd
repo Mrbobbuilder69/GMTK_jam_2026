@@ -16,7 +16,7 @@ func _physics_process(delta):
 
 	if Input.get_action_raw_strength("attack"):
 		shoot.emit(position.x, position.y)
-		Global.blood-=100
+		Global.blood-=40
 	
 	if Input.get_action_raw_strength("melee"):
 		get_child(2).position=Vector2(0,0)

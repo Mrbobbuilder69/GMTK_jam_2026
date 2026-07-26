@@ -7,6 +7,7 @@ extends RigidBody2D
 @export var footstep_interval : float = 30.0
 @export var transition_speeds_speed : float = 10.0 # basically how fast speed updates between states
 @export var audioPlayer: AudioStreamPlayer2D
+@onready var blood: ProgressBar = $"../cam/UI/PanelContainer/MarginContainer/Blood"
 
 var footstep_distance_counter : float = 0.0
 var prev_position : Vector2
@@ -52,6 +53,8 @@ func _physics_process(delta: float) -> void:
 	
 	if Input.is_action_just_pressed("esc"):
 		get_tree().change_scene_to_file("res://Scenes/main_menu2.tscn")
+	
+	blood.value = Global.blood
 
 func _process(delta):
 	pass#print(str(Global.blood))

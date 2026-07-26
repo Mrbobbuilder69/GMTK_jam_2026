@@ -50,6 +50,7 @@ func onDeath():
 	print("summon corpse and blood stuff here and do other death things")
 	freeze=true
 	death.emit(position)
+	Global.blood = clamp(Global.blood + 10, 0, 200)
 
 func onDamage(damangeAmount:float):
 	print("particles and other damage effect stuff")

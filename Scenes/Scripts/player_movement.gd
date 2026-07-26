@@ -37,8 +37,8 @@ func _physics_process(delta: float) -> void:
 	prev_position = global_position
 	
 	collision=move_and_collide(Vector2(0,0)*inputVec*delta)
-	if collision and collision.get_collider().has_meta("Enemy"):
-		if cur_speed>100:
+	if collision and collision.get_collider().has_meta("Enemy") and collision.get_collider().blood>0:
+		if cur_speed>110:
 			collision.get_collider().blood-=100
 		else:
 			Global.blood-=100

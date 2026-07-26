@@ -39,10 +39,8 @@ func _physics_process(delta: float) -> void:
 	
 	prev_position = global_position
 	
-	## Blood Increase
-	
-	##if Input.is_action_just_pressed("f"):
-		##blood = clamp(blood + 5, MIN_BLD, MAX_BLD)
+	if Input.is_action_just_pressed("esc"):
+		get_tree().change_scene_to_file("res://Scenes/main_menu2.tscn")
 
 func _process(delta):
 	bloodbar.value = Global.blood

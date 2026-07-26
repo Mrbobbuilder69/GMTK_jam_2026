@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://dyvm65on3uj0s"]
+
+[ext_resource type="Texture2D" uid="uid://jr5gqikdy55g" path="res://Assets/tiles/road1.png" id="1_ntb3j"]
+
+[node name="Road1" type="Sprite2D" unique_id=978082299]
+rotation = 1.5707964
+scale = Vector2(0.42, 0.42)
+texture = ExtResource("1_ntb3j")

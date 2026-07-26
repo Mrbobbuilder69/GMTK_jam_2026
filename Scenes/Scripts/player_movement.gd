@@ -6,12 +6,15 @@ extends RigidBody2D
 @export var dash_cooldown : float = 1.0
 @export var footstep_interval : float = 30.0
 @export var transition_speeds_speed : float = 10.0 # basically how fast speed updates between states
+@export var audioPlayer: AudioStreamPlayer2D
 
 var footstep_distance_counter : float = 0.0
 var prev_position : Vector2
 var cur_speed : float
 var dash_cooldown_timer := 0.0
 var collision
+func ready():
+	audioPlayer.play()
 func _physics_process(delta: float) -> void:
 	var inputVec := Input.get_vector("Left","Right","Up","Down")
 	var mousePos = get_global_mouse_position()

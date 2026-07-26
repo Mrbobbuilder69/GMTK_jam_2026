@@ -36,4 +36,9 @@ func _physics_process(delta: float) -> void:
 	
 	prev_position = global_position
 
+<<<<<<< Updated upstream:Scripts/player_movement.gd
 	#peepeepoopoo
+=======
+func _process(delta):
+	bloodbar.value = Global.blood
+>>>>>>> Stashed changes:Scenes/Scripts/player_movement.gd

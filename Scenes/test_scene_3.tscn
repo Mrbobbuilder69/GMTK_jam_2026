@@ -1,0 +1,49 @@
+[gd_scene format=3 uid="uid://dhlpw0sana631"]
+
+[ext_resource type="PackedScene" uid="uid://c520ybe8rgo7x" path="res://Scenes/player.tscn" id="1_acjkx"]
+[ext_resource type="Script" uid="uid://ctgu1ijoxfidi" path="res://Scenes/cam.gd" id="2_u17y5"]
+[ext_resource type="Texture2D" uid="uid://b46shyvcmigyb" path="res://icon.svg" id="3_ljhd3"]
+[ext_resource type="Script" uid="uid://ceq7jc8gb121q" path="res://Scenes/Scripts/blood_spawn.gd" id="4_rcv7r"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eaav3"]
+size = Vector2(130, 130)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wcb3r"]
+size = Vector2(1645, 919)
+
+[node name="Node2D" type="Node2D" unique_id=1330387886]
+
+[node name="player" parent="." unique_id=421033602 instance=ExtResource("1_acjkx")]
+speed = 100.0
+
+[node name="cam" type="Camera2D" parent="." unique_id=564697421 node_paths=PackedStringArray("target")]
+script = ExtResource("2_u17y5")
+target = NodePath("../player")
+follow_speed = 10.0
+
+[node name="UI" type="CanvasLayer" parent="cam" unique_id=871667315]
+
+[node name="Panel" type="Panel" parent="cam/UI" unique_id=120975989]
+offset_right = 576.0
+offset_bottom = 324.0
+
+[node name="Label" type="Label" parent="cam/UI/Panel" unique_id=651206033]
+layout_mode = 0
+offset_right = 576.0
+offset_bottom = 324.0
+
+[node name="obstacle" type="StaticBody2D" parent="." unique_id=423191758]
+position = Vector2(-96, -61)
+
+[node name="sprite2D" type="Sprite2D" parent="obstacle" unique_id=1308029334]
+texture = ExtResource("3_ljhd3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="obstacle" unique_id=1537577840]
+shape = SubResource("RectangleShape2D_eaav3")
+
+[node name="Blood Spawn" type="Area2D" parent="." unique_id=1873080463]
+script = ExtResource("4_rcv7r")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Blood Spawn" unique_id=300830166]
+position = Vector2(-28.5, 19.5)
+shape = SubResource("RectangleShape2D_wcb3r")

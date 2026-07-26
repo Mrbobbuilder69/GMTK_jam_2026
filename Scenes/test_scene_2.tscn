@@ -6,8 +6,7 @@
 [ext_resource type="Script" uid="uid://ceq7jc8gb121q" path="res://Scenes/Scripts/blood_spawn.gd" id="4_pt0jc"]
 [ext_resource type="PackedScene" uid="uid://o2g7ftervbl2" path="res://Scenes/brawler_enemy.tscn" id="5_vmw76"]
 [ext_resource type="PackedScene" uid="uid://dq4a7hgxphqdw" path="res://Scenes/enemy_spawner.tscn" id="6_njadv"]
-[ext_resource type="Script" uid="uid://dvxmfex5qcugv" path="res://Scenes/Scripts/boss_battle.gd" id="7_ogbot"]
-[ext_resource type="PackedScene" uid="uid://b4lxko6luyfrd" path="res://Scenes/boss.tscn" id="8_i2ifw"]
+[ext_resource type="PackedScene" uid="uid://cegan3jsq310e" path="res://Scenes/boss_battle.tscn" id="7_ogbot"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dqqax"]
 bg_color = Color(0.28081146, 0.6756826, 0.6291818, 1)
@@ -83,34 +82,7 @@ metadata/Enemy = false
 [node name="enemy_spawner" parent="." unique_id=1425821161 instance=ExtResource("6_njadv")]
 spawn_interval = 3.0
 
-[node name="boss_battle" type="Node2D" parent="." unique_id=915326116]
+[node name="boss_battle" parent="." unique_id=1676871695 instance=ExtResource("7_ogbot")]
 position = Vector2(-25, 622)
-script = ExtResource("7_ogbot")
-activation_distance = 300.0
-boss_change_pos_interval = 10.0
-
-[node name="enemy_spawners" type="Node2D" parent="boss_battle" unique_id=1240339857]
-
-[node name="boss_spawner" parent="boss_battle/enemy_spawners" unique_id=2045461546 instance=ExtResource("6_njadv")]
-enemies = Array[PackedScene]([ExtResource("8_i2ifw")])
-
-[node name="enemy_spawner2" parent="boss_battle/enemy_spawners" unique_id=1286686225 instance=ExtResource("6_njadv")]
-spawn_count = 9999
-spawn_interval = 5.0
-
-[node name="enemy_spawner3" parent="boss_battle/enemy_spawners" unique_id=1093628494 instance=ExtResource("6_njadv")]
-spawn_count = 9999
-spawn_interval = 5.0
-
-[node name="boss_points" type="Node2D" parent="boss_battle" unique_id=2116900333]
-
-[node name="0" type="Node2D" parent="boss_battle/boss_points" unique_id=1189178490]
-position = Vector2(-104, -88)
-
-[node name="1" type="Node2D" parent="boss_battle/boss_points" unique_id=2141344702]
-position = Vector2(-100, 97)
-
-[node name="2" type="Node2D" parent="boss_battle/boss_points" unique_id=141246541]
-position = Vector2(107, -28)
 
 [connection signal="death" from="BrawlerEnemy" to="Blood Spawn" method="_on_brawler_enemy_death"]

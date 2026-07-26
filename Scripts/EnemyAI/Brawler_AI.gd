@@ -17,6 +17,8 @@ func _ready() -> void:
 
 ##Bounces around a closed room, might pull this up to the enemy controller
 func patrolBehaviour(delta:float) ->void:
+	if move_and_collide(Vector2.ZERO):
+		print("colliding")
 	if ray2D == null:
 		print("Ray object not set in inspector")
 		return
@@ -24,7 +26,7 @@ func patrolBehaviour(delta:float) ->void:
 	ray2D.target_position = Vector2(1,0)*rayScanDistance
 
 	if ray2D.is_colliding() and canBounce:
-
+		print("now")
 		var velocity := rb.linear_velocity
 		#get raycast hit information 
 		var collisionData := RaycastHitData.new(ray2D.get_collider(),
